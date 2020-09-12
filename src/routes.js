@@ -1,26 +1,16 @@
 const express = require("express");
+const multer = require("multer");
+const multerConfig = require("./config/multer");
+const contact = require("./app/controllers/ContactController");
+
 const routes = express.Router();
-const instructors = require("./app/controllers/instructors");
-const members = require("./app/controllers/members");
 
-routes.get("/", (req, res) => {
-  return res.redirect("/instructors");
-});
+const upload = multer(multerConfig);
 
-routes.get("/instructors", instructors.index);
-routes.get("/instructors/create", instructors.create);
-routes.get("/instructors/:id", instructors.show);
-routes.get("/instructors/:id/edit", instructors.edit);
-routes.post("/instructors", instructors.post);
-routes.put("/instructors", instructors.put);
-routes.delete("/instructors", instructors.delete);
-
-routes.get("/members", members.index);
-routes.get("/members/create", members.create);
-routes.get("/members/:id", members.show);
-routes.get("/members/:id/edit", members.edit);
-routes.post("/members", members.post);
-routes.put("/members", members.put);
-routes.delete("/members", members.delete);
+routes.get("/contacts", contact.index); //feito
+routes.get("/contacts/:id", contact.show); //feito
+routes.post("/contacts", upload.single("image"), contact.create); //feito
+routes.put("/contacts/:id", upload.single("image"), contact.update); //feito
+routes.delete("/contacts/:id", contact.destroy); //feito
 
 module.exports = routes;

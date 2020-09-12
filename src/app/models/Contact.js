@@ -1,4 +1,3 @@
-const { count } = require("../../config/db");
 const db = require("../../config/db");
 
 const table = () => db("contact");
