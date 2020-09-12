@@ -9,8 +9,8 @@ const upload = multer(multerConfig);
 
 routes.get("/contacts", contact.index); //feito
 routes.get("/contacts/:id", contact.show); //feito
-routes.post("/contacts", upload.single("image"), contact.create); //feito
-routes.put("/contacts/:id", upload.single("image"), contact.update); //feito
+routes.post("/contacts/create", upload.single("image"), contact.create); //feito
+routes.put("/contacts/:id/edit", upload.single("image"), contact.update); //feito
 routes.delete("/contacts/:id", contact.destroy); //feito
 
 module.exports = routes;

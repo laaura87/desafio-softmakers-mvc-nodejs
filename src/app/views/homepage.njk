@@ -1,0 +1,47 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+   <header>
+      <h1 class='title'>Cadastro de Contatos</h1>
+    </header>
+
+   <div class="content container">
+      <a href="">
+         <button class='buttons'>
+            Cadastrar
+         </button>
+      </a>
+
+
+      <div>
+         {% for contact in contacts %}
+         <div class='image-container'>
+            <div class='img-width'>
+               <img src="/uploads/{{contact.image}}" alt="">
+            </div>
+            <div>
+               <p>{{contact.name}}</p>
+            </div>
+            <div>
+               <a href="">
+                  <button class='buttons'>
+                  Editar
+                  </button>
+               </a>
+               <a href="/contacts/{{contact.id}}">
+                  <button class='buttons'>
+                  Visualizar
+                  </button>
+               </a>
+               <a href="">
+                  <button class='buttons delete'>
+                  Apagar
+                  </button>
+               </a>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+
+{% endblock content %}

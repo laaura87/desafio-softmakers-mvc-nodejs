@@ -9,7 +9,7 @@ module.exports = {
       const contacts = await Contacts.index(config);
       const count = await Contacts.count();
 
-      return res.json({
+      return res.render("homepage", {
         ...config,
         count,
         pages: Math.ceil(count / config.itemsPerPage),
@@ -21,6 +21,7 @@ module.exports = {
       });
     }
   },
+
   async show(req, res) {
     try {
       const { id } = req.params;
@@ -29,7 +30,7 @@ module.exports = {
       if (!findContact)
         return res.status(404).send({ Error: "Contact not found." });
 
-      return res.json({ findContact });
+      return res.render("showcontact", { findContact });
     } catch (error) {
       return res.status(500).send("Unexpected error while showing contact.");
     }
@@ -77,9 +78,12 @@ module.exports = {
     try {
       const { id } = req.params;
       const deletedContact = await Contacts.destroy(id);
+
       if (!deletedContact) return res.json({ error: "Contact not found" });
+
       deleteFile(deletedContact.image);
-      return res.json({ Messege: "Contact successfully deleted" });
+
+      return res.redirect("/contacts");
     } catch (error) {
       return res
         .status(500)
