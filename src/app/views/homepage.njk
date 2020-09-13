@@ -23,7 +23,7 @@
                <p>{{contact.name}}</p>
             </div>
             <div>
-               <a href="">
+               <a href="/contacts/{{contact.id}}/edit">
                   <button class='buttons'>
                   Editar
                   </button>
@@ -42,6 +42,11 @@
          </div>
          {% endfor %}
       </div>
+
+      <div class="pagination" 
+         data-page={{page}}
+         data-total={{pages}}
+      ></div>
    </div>
 
 {% endblock content %}

@@ -16,6 +16,7 @@ function paginate(selectedPage, totalPages) {
     const firstAndLastPage = currentPage == 1 || currentPage == totalPages;
     const pagesAfterSelectedpage = currentPage <= selectedPage + 2;
     const pagesBeforeSelectedpage = selectedPage - 2;
+
     if (
       firstAndLastPage ||
       (pagesBeforeSelectedpage && pagesAfterSelectedpage)
@@ -34,11 +35,11 @@ function paginate(selectedPage, totalPages) {
   }
   return pages;
 }
+
 function createPagination(pagination) {
-  const page = pagination.dataset.page;
+  const currentPage = pagination.dataset.page;
   const total = pagination.dataset.total;
-  const pages = paginate(page, total);
-  const filter = pagination.dataset.filter;
+  const pages = paginate(currentPage, total);
 
   let elements = "";
 
@@ -46,8 +47,8 @@ function createPagination(pagination) {
     if (String(pages).includes("...")) {
       elements += `<span> ${page} </span>`;
     } else {
-      if (filter) {
-        elements += `<a href="?page=${page}&filter=${filter}"> ${page} </a>`;
+      if (page == currentPage) {
+        elements += `<a class="active" href="?page=${page} "> ${page} </a>`;
       } else {
         elements += `<a href="?page=${page}"> ${page} </a>`;
       }
@@ -56,6 +57,7 @@ function createPagination(pagination) {
 
   pagination.innerHTML = elements;
 }
+
 const pagination = document.querySelector(".pagination");
 
 if (pagination) {

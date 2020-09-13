@@ -11,7 +11,8 @@ module.exports = {
     return await table()
       .select("*")
       .offset((page - 1) * itemsPerPage)
-      .limit(itemsPerPage);
+      .limit(itemsPerPage)
+      .orderBy("id");
   },
   async show(id) {
     return await table().where({ id: id }).first();

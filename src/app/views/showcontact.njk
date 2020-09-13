@@ -39,13 +39,13 @@
           </div>
       </div>
       <div class="buttons-group">
-        <a href="">
+        <a href="/contacts/{{findContact.id}}/edit">
           <button class='buttons'>
            <i class="fas fa-user-edit"></i>
           </button>
         </a>
-        <form id="form-delete" action="/contacts/{{findContact.id}}/?_method=DELETE" method='post'>
-          <button class='buttons delete' onClick="">
+        <form action="/contacts/{{findContact.id}}/?_method=DELETE" method='post'>
+          <button class='buttons delete' id="form-delete">
             <i class="fas fa-trash"></i>
           </button>
         </form>

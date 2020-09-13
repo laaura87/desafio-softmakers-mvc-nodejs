@@ -52,22 +52,31 @@ module.exports = {
     }
   },
 
+  async edit(req, res) {
+    const { id } = req.params;
+    const contact = await Contacts.show(id);
+    return res.render("editpage.njk", { contact });
+  },
+
   async update(req, res) {
     try {
       const { id } = req.params;
 
       const contact = {
         ...req.body,
-        image: req.file.filename,
+        image: req.file ? req.file.filename : undefined,
         id,
       };
 
-      const updateContact = await Contacts.update(contact);
+      console.log(contact);
 
-      deleteFile(updateContact.image);
+      const contactUpdate = await Contacts.update(contact);
 
-      return res.status(201).send();
+      if (contact.image) deleteFile(contactUpdate.image);
+
+      return res.redirect("/contacts");
     } catch (error) {
+      console.log(error);
       return res.status(500).json({
         error: "Unexpected error while editing contact",
       });

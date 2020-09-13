@@ -1,0 +1,89 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="title">Editar Contato</h1>
+    <div class="content">
+      <div class="img-container">
+       <img src="/uploads/{{contact.image}}" alt="">
+      </div>
+
+      <form method="post" action='/contacts/{{contact.id}}/?_method=PUT' enctype="multipart/form-data">
+        <div class="input-file">
+          <input type="file" name='image' >
+        </div>
+
+        <div class="label-form">
+          <div>
+              <label>Nome:</label>
+              <input type="text" name="name" value="{{contact.name}}" />
+          </div>
+          <div>
+              <label>Sobrenome:</label>
+              <input type="text" name="surname" value="{{contact.surname}}" />
+          </div>
+        </div>
+
+        <div class="label-form">
+          <div>
+              <label>Telefone:</label>
+              <input type="text" name="phone" value="{{contact.phone}}" />
+          </div>
+          <div>
+              <label>E-mail:</label>
+              <input type="email" name="email" value="{{contact.email}}" />
+          </div>
+        </div>
+
+        <div class="label-form">
+          <div>
+              <label>CEP:</label>
+              <input type="text" name="cep" value="{{contact.cep}}" maxLength=9/>
+          </div>
+          <div>
+              <label>Estado:</label>
+              <input type="text" name="state" value="{{contact.state}}" />
+          </div>
+        </div>
+
+        <div class="label-form">
+          <div>
+              <label>Cidade:</label>
+              <input type="text" name="city" value="{{contact.city}}" />
+          </div>
+          <div>
+              <label>Rua:</label>
+              <input type="text" name="street" value="{{contact.street}}" />
+          </div>
+        </div>
+
+        <div class="label-form">
+          <div>
+              <label>Bairro:</label>
+              <input type="text" name="neighborhood" value="{{contact.neighborhood}}" />
+          </div>
+          <div>
+              <label>Sobrenome:</label>
+              <input type="text" name="number" value="{{contact.number}}" />
+          </div>
+        </div>
+
+        <div class="buttons-container">
+          <a href="/contacts">
+            <i class="fas fa-arrow-left"></i>
+            <span>Voltar para o início</span>
+          </a>
+          <a href="">
+            <button class='buttons' type='submit'>
+              Editar
+            </button>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+<script src="https://kit.fontawesome.com/6b50c4bfd1.js" crossorigin="anonymous"></script>
+
+{% endblock content %}

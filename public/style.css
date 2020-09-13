@@ -163,10 +163,128 @@ a {
   width: 90%;
 }
 
+/* edit page */
+.img-container {
+  width: 100%;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.img-container img {
+  margin-top: 20px;
+  margin: 0 auto;
+  object-fit: cover;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
+
+.input-file {
+  width: 60%;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid grey;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.label-form {
+  width: 90%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.label-form div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label-form label {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.label-form input {
+  border: 1px solid grey;
+  outline: none;
+  padding: 5px;
+  width: 70%;
+  border-radius: 8px;
+}
+
+.buttons-container {
+  width: 90%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.buttons-container button {
+  width: 100%;
+}
+.buttons-container a {
+  display: flex;
+  align-items: center;
+}
+
+.buttons-container a span {
+  margin-left: 5px;
+}
+
+/* pagination */
+
+.pagination {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination a,
+.pagination span {
+  background-color: transparent;
+  border-radius: 99px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  border: none;
+  color: #3b3b3b;
+  margin: 16px 4px;
+  outline: none;
+  transition: all 0.1s;
+  user-select: none;
+}
+
+.pagination a:hover {
+  filter: brightness(0.3);
+  background-color: #0002;
+}
+
+.pagination a.active {
+  background-color: #0003;
+}
+
 @media (max-width: 768px) {
   .container-contact {
     display: flex;
     flex-direction: column;
     height: 100%;
+  }
+  .input-file {
+    width: 80%;
+  }
+  .label-form {
+    grid-template-columns: 1fr;
   }
 }
