@@ -1,7 +1,12 @@
 const Contacts = require("../models/Contact");
 const { deleteFile } = require("../../lib/utils");
+const fs = require("fs");
+const path = require("path");
 
 module.exports = {
+  createPage(req, res) {
+    return res.render("signuppage");
+  },
   async index(req, res) {
     try {
       const page = parseInt(req.query.page || "1", 10);
@@ -44,7 +49,7 @@ module.exports = {
       };
 
       await Contacts.create(contact);
-      return res.status(201).send();
+      return res.redirect("/contacts");
     } catch (error) {
       return res.status(500).json({
         error: "Unexpected error when creating new contact.",
@@ -68,8 +73,6 @@ module.exports = {
         id,
       };
 
-      console.log(contact);
-
       const contactUpdate = await Contacts.update(contact);
 
       if (contact.image) deleteFile(contactUpdate.image);
@@ -90,7 +93,7 @@ module.exports = {
 
       if (!deletedContact) return res.json({ error: "Contact not found" });
 
-      deleteFile(deletedContact.image);
+      if (deletedContact.image) deleteFile(deletedContact.image);
 
       return res.redirect("/contacts");
     } catch (error) {

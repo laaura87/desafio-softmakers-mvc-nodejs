@@ -54,6 +54,14 @@ a {
   transition: 0.4s;
 }
 
+.buttons-homepage {
+  display: flex;
+}
+
+.buttons-homepage button {
+  margin-right: 5px;
+}
+
 /* card image */
 
 .image-container {

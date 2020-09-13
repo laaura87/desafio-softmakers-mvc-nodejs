@@ -15,8 +15,7 @@ function paginate(selectedPage, totalPages) {
   for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
     const firstAndLastPage = currentPage == 1 || currentPage == totalPages;
     const pagesAfterSelectedpage = currentPage <= selectedPage + 2;
-    const pagesBeforeSelectedpage = selectedPage - 2;
-
+    const pagesBeforeSelectedpage = currentPage >= selectedPage - 2;
     if (
       firstAndLastPage ||
       (pagesBeforeSelectedpage && pagesAfterSelectedpage)
@@ -35,10 +34,10 @@ function paginate(selectedPage, totalPages) {
   }
   return pages;
 }
-
 function createPagination(pagination) {
   const currentPage = pagination.dataset.page;
   const total = pagination.dataset.total;
+
   const pages = paginate(currentPage, total);
 
   let elements = "";

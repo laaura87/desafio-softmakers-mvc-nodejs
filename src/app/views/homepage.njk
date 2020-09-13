@@ -6,7 +6,7 @@
     </header>
 
    <div class="content container">
-      <a href="">
+      <a href="/contacts/create">
          <button class='buttons'>
             Cadastrar
          </button>
@@ -22,7 +22,7 @@
             <div>
                <p>{{contact.name}}</p>
             </div>
-            <div>
+            <div class='buttons-homepage'>
                <a href="/contacts/{{contact.id}}/edit">
                   <button class='buttons'>
                   Editar
@@ -33,11 +33,13 @@
                   Visualizar
                   </button>
                </a>
-               <a href="">
-                  <button class='buttons delete'>
-                  Apagar
-                  </button>
-               </a>
+               <form action="/contacts/{{contact.id}}/?_method=DELETE" method='post'>
+                  <a href="">
+                     <button class='buttons delete'>
+                     Apagar
+                     </button>
+                  </a>
+               </form>
             </div>
          </div>
          {% endfor %}
@@ -48,5 +50,17 @@
          data-total={{pages}}
       ></div>
    </div>
+
+
+<script>
+   const formDelete = document.querySelector("#form-delete");
+
+  formDelete.addEventListener("submit", (event) => {
+    const confirm = confirm("Confirma as alterações?");
+    if (!confirm) {
+     event.preventDefault();
+    }
+  });
+</script>
 
 {% endblock content %}
