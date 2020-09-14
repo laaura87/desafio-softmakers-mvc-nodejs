@@ -38,6 +38,9 @@ yarn start
 ```
 
 Development server will be running in the [http://localhost:3050](http://localhost:3050)
+## Desafios/problemas encontrados durante a realização do projeto
+
+Esse projeto foi menos desafiador que o de PHP, pois já tenho familiaridade com node.js e a template engine utilizada no projeto, o nunjucks. O único desafio mesmo foi o upload de fotos que eu ainda não tinha feito usando o 'html puro'.
 
 ## License
 
