@@ -1,6 +1,4 @@
-const knex = require("knex");
-
-export async function up(knex) {
+exports.up = function (knex) {
   return knex.schema.createTable("contact", (table) => {
     table.increments("id").primary();
     table.string("image").notNullable();
@@ -15,8 +13,8 @@ export async function up(knex) {
     table.string("neighborhood").notNullable();
     table.string("number");
   });
-}
+};
 
-export async function down(knex) {
+exports.down = function (knex) {
   return knex.schema.dropSchema("contact");
-}
+};
